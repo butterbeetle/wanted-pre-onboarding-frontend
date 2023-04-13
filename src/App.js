@@ -30,7 +30,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} basename={process.env.PUBLIC_URL} />;
 }
 
 export default App;
