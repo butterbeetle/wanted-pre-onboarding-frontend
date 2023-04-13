@@ -4,6 +4,7 @@ import RootLayout from "./Layout/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
 import SignupPage from "./pages/SignupPage";
 import SignInPage from "./pages/SignInPage";
+import TodoPage from "./pages/TodoPage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/signin",
         element: <SignInPage />,
+      },
+      {
+        path: "/todo",
+        element: <TodoPage />,
       },
     ],
   },

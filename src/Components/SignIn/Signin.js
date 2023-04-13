@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./Signup.module.css";
+import styles from "./Signin.module.css";
 import { useState } from "react";
 
-const Signup = () => {
+const Signin = () => {
   const navigate = useNavigate();
   const [emailValue, setEmailValue] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -42,7 +42,7 @@ const Signup = () => {
     }
     // console.log(emailValue, passwordValue);
     const res = await fetch(
-      "https://www.pre-onboarding-selection-task.shop/auth/signup",
+      "https://www.pre-onboarding-selection-task.shop/auth/signin",
       {
         method: "POST",
         headers: {
@@ -54,17 +54,20 @@ const Signup = () => {
         }),
       }
     );
-
-    if (res.status === 400) {
-      alert("동일한 이메일이 이미 존재합니다.");
+    const { status } = res;
+    if (status === 404 || status === 401) {
+      alert("이메일 혹은 비밀번호를 확인해주세요.");
       return;
     }
-    navigate("/signin");
+    const token = await res.json();
+
+    localStorage.setItem("access_token", JSON.stringify(token.access_token));
+    navigate("/todo");
   };
 
   return (
     <main className={styles["main"]}>
-      <h1>회원가입</h1>
+      <h1>로그인</h1>
       <form>
         <div>
           <label htmlFor="email">
@@ -100,15 +103,15 @@ const Signup = () => {
         <button
           className={styles["button"]}
           onClick={onSubmit}
-          data-testid="signup-button"
+          data-testid="signin-button"
           type="submit"
           disabled={emailError || passwordError}
         >
-          회원가입
+          로그인
         </button>
       </form>
     </main>
   );
 };
 
-export default Signup;
+export default Signin;
