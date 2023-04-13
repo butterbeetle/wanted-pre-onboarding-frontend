@@ -35,7 +35,6 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  console.log(process.env.PUBLIC_URL);
   return <RouterProvider router={router} />;
 }
 
