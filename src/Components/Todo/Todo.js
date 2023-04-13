@@ -1,8 +1,10 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styles from "./Todo.module.css";
 import TodoItem from "./TodoItem";
+import { useNavigate } from "react-router-dom";
 
 const Todo = () => {
+  const navigate = useNavigate();
   const [todos, setTodos] = useState([]);
   const inputRef = useRef();
 
@@ -123,6 +125,10 @@ const Todo = () => {
   useLayoutEffect(() => {
     getTodos();
   }, []);
+
+  useEffect(() => {
+    if (!localStorage.getItem("access_token")) navigate("/signin");
+  }, [navigate]);
 
   return (
     <main>

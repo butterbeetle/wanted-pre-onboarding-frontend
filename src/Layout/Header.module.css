@@ -1,0 +1,25 @@
+.header {
+  background-color: black;
+  padding: 10px;
+}
+.header ul {
+  display: flex;
+  justify-content: space-between;
+}
+.header a {
+  text-decoration: none;
+  color: rgb(211, 224, 235);
+  font-size: 25px;
+}
+.header p {
+  cursor: pointer;
+  color: rgb(211, 224, 235);
+  font-size: 25px;
+}
+.header div {
+  display: flex;
+  justify-content: space-between;
+}
+.header div li {
+  margin-left: 20px;
+}
