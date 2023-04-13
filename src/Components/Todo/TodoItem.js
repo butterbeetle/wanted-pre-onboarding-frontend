@@ -65,27 +65,25 @@ const TodoItem = ({ todo, updataTodo, completedCheck, deleteTodo }) => {
   );
 
   return (
-    <div className={styles["list"]}>
-      <li>
-        <label>
+    <li className={styles["list"]}>
+      <label>
+        <input
+          type="checkbox"
+          onChange={completedHandler}
+          checked={completed}
+        />
+        {updateMod && (
           <input
-            type="checkbox"
-            onChange={completedHandler}
-            checked={completed}
+            data-testid="modify-input"
+            type="text"
+            value={inputValue}
+            onChange={onchange}
           />
-          {updateMod && (
-            <input
-              data-testid="modify-input"
-              type="text"
-              value={inputValue}
-              onChange={onchange}
-            />
-          )}
-          {!updateMod && <span>{todo.todo}</span>}
-        </label>
-        <div className={styles["button-box"]}>{button}</div>
-      </li>
-    </div>
+        )}
+        {!updateMod && <span>{todo.todo}</span>}
+      </label>
+      <div className={styles["button-box"]}>{button}</div>
+    </li>
   );
 };
 
