@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
 import { useState } from "react";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [emailValue, setEmailValue] = useState("");
   const [emailError, setEmailError] = useState(false);
 
@@ -30,14 +32,34 @@ const Signup = () => {
     }
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+
     if (!emailValue || !passwordValue) {
       if (!emailValue) setEmailError(true);
       if (!passwordValue) setPasswordError(true);
       return;
     }
-    console.log("Submit");
+    console.log(emailValue, passwordValue);
+    const res = await fetch(
+      "https://www.pre-onboarding-selection-task.shop/auth/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailValue,
+          password: passwordValue,
+        }),
+      }
+    );
+
+    if (res.status === 400) {
+      alert("동일한 이메일이 이미 존재합니다.");
+      return;
+    }
+    navigate("/signin");
   };
 
   return (
