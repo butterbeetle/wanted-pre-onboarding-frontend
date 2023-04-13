@@ -1,30 +1,25 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import RootLayout from "./Layout/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
 import SignupPage from "./pages/SignupPage";
-import SignInPage from "./pages/SignInPage";
+import SignInPage from "./pages/SigninPage";
 import TodoPage from "./pages/TodoPage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <RootLayout />,
+    path: "/todo",
+    element: <TodoPage />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/signup",
-        element: <SignupPage />,
-      },
-      {
-        path: "/signin",
-        element: <SignInPage />,
-      },
-      {
-        path: "/todo",
-        element: <TodoPage />,
-      },
-    ],
+  },
+  {
+    path: "/signin",
+    element: <SignInPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/signup",
+    element: <SignupPage />,
+    errorElement: <ErrorPage />,
   },
 ]);
 

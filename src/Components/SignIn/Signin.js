@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./Signin.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -64,7 +64,9 @@ const Signin = () => {
     localStorage.setItem("access_token", JSON.stringify(token.access_token));
     navigate("/todo");
   };
-
+  useEffect(() => {
+    if (localStorage.getItem("access_token")) navigate("/todo");
+  }, [navigate]);
   return (
     <main className={styles["main"]}>
       <h1>로그인</h1>

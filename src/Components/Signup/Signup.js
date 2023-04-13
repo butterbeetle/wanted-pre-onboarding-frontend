@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -61,6 +61,10 @@ const Signup = () => {
     }
     navigate("/signin");
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("access_token")) navigate("/todo");
+  }, [navigate]);
 
   return (
     <main className={styles["main"]}>
