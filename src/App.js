@@ -5,32 +5,37 @@ import SignupPage from "./pages/SignupPage";
 import SignInPage from "./pages/SigninPage";
 import TodoPage from "./pages/TodoPage";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/todo",
+      element: <TodoPage />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/",
+      element: <SignInPage />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "/signin",
+          element: <SignInPage />,
+        },
+      ],
+    },
+    {
+      path: "/signup",
+      element: <SignupPage />,
+      errorElement: <ErrorPage />,
+    },
+  ],
   {
-    path: "/todo",
-    element: <TodoPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/",
-    element: <SignInPage />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/signin",
-        element: <SignInPage />,
-      },
-    ],
-  },
-  {
-    path: "/signup",
-    element: <SignupPage />,
-    errorElement: <ErrorPage />,
-  },
-]);
+    basename: process.env.PUBLIC_URL,
+  }
+);
 
 function App() {
-  return <RouterProvider router={router} basename={process.env.PUBLIC_URL} />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
