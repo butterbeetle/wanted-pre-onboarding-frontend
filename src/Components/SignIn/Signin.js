@@ -60,8 +60,8 @@ const Signin = () => {
       return;
     }
     const token = await res.json();
-
-    localStorage.setItem("access_token", JSON.stringify(token.access_token));
+    // console.log(token.access_token);
+    localStorage.setItem("access_token", token.access_token);
     navigate("/todo");
   };
   useEffect(() => {

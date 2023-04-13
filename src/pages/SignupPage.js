@@ -5,7 +5,7 @@ const SignupPage = () => {
   return (
     <>
       <Header />
-      <Signup />;
+      <Signup />
     </>
   );
 };

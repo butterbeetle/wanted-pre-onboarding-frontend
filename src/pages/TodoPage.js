@@ -5,7 +5,7 @@ const TodoPage = () => {
   return (
     <>
       <Header />
-      <Todo />;
+      <Todo />
     </>
   );
 };
