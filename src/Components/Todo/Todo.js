@@ -12,6 +12,7 @@ const Todo = () => {
   const createTodo = async (e) => {
     e.preventDefault();
     const todo = inputRef.current.value;
+    if (!todo) return;
     const res = await fetch(
       "https://www.pre-onboarding-selection-task.shop/todos",
       {
@@ -131,10 +132,14 @@ const Todo = () => {
   }, [navigate]);
 
   return (
-    <main>
-      <div>
+    <main className={styles["main"]}>
+      <div className={styles["new-todo"]}>
         <form>
-          <input ref={inputRef} data-testid="new-todo-input" />
+          <input
+            ref={inputRef}
+            data-testid="new-todo-input"
+            placeholder="할 일을 입력하세요."
+          />
           <button
             onClick={createTodo}
             type="submit"
@@ -144,7 +149,7 @@ const Todo = () => {
           </button>
         </form>
       </div>
-      <div>
+      <div className={styles["todo-list"]}>
         <ul>
           {todos.map((todo) => {
             return (

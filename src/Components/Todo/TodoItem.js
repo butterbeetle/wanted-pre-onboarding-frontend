@@ -65,7 +65,7 @@ const TodoItem = ({ todo, updataTodo, completedCheck, deleteTodo }) => {
   );
 
   return (
-    <div>
+    <div className={styles["list"]}>
       <li>
         <label>
           <input
@@ -83,7 +83,7 @@ const TodoItem = ({ todo, updataTodo, completedCheck, deleteTodo }) => {
           )}
           {!updateMod && <span>{todo.todo}</span>}
         </label>
-        {button}
+        <div className={styles["button-box"]}>{button}</div>
       </li>
     </div>
   );

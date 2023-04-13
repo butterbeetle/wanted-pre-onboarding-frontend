@@ -1,0 +1,23 @@
+.list {
+  margin-bottom: 20px;
+}
+.list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.list input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+.list input[type="text"] {
+  padding: 10px;
+}
+.button-box button {
+  cursor: pointer;
+  height: 40px;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-right: 10px;
+}
