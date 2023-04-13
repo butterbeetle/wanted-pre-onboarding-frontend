@@ -40,7 +40,7 @@ const Signup = () => {
       if (!passwordValue) setPasswordError(true);
       return;
     }
-    // console.log(emailValue, passwordValue);
+
     const res = await fetch(
       "https://www.pre-onboarding-selection-task.shop/auth/signup",
       {

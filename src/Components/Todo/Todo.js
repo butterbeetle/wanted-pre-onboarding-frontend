@@ -123,7 +123,7 @@ const Todo = () => {
 
   /* 첫 접속 시 Todo 가져오기 */
   useLayoutEffect(() => {
-    getTodos();
+    if (localStorage.getItem("access_token")) getTodos();
   }, []);
 
   useEffect(() => {

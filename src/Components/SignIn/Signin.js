@@ -40,7 +40,7 @@ const Signin = () => {
       if (!passwordValue) setPasswordError(true);
       return;
     }
-    // console.log(emailValue, passwordValue);
+
     const res = await fetch(
       "https://www.pre-onboarding-selection-task.shop/auth/signin",
       {
@@ -60,13 +60,14 @@ const Signin = () => {
       return;
     }
     const token = await res.json();
-    // console.log(token.access_token);
     localStorage.setItem("access_token", token.access_token);
     navigate("/todo");
   };
+
   useEffect(() => {
     if (localStorage.getItem("access_token")) navigate("/todo");
   }, [navigate]);
+
   return (
     <main className={styles["main"]}>
       <h1>로그인</h1>
