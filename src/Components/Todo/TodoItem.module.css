@@ -12,6 +12,17 @@
 }
 .list input[type="text"] {
   padding: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.list span {
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.list label {
+  display: flex;
+  align-items: center;
 }
 .button-box button {
   cursor: pointer;
